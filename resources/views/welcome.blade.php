@@ -65,17 +65,12 @@
                     </form>
                 </div>
             </div>
-
-
             <div class="row mt-3">
                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button type="button" class="btn btn-danger">Referanslara Göre Listele</button>
-                    <button type="button" class="btn btn-warning">Kullanıcı Dillerine Göre Listele</button>
+                    <a href="{{route("appeal.order")}}?data=referance" target="_blank"><button type="button" class="btn btn-danger">Referanslara Göre Listele</button></a>
+                    <a href="{{route("appeal.order")}}?data=language" target="_blank"><button href="#" type="button" class="btn btn-warning">Kullanıcı Dillerine Göre Listele</button></a>
                 </div>
-
             </div>
-
-
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

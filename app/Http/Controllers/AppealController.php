@@ -2,14 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\LocationMiddleware;
 use App\Models\Appeal;
 use App\Models\CountryCodes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
+use Stevebauman\Location\Facades\Location;
+
+
 class AppealController extends Controller
 {
+
+    public function __construct()
+    {
+
+
+
+        $this->middleware(LocationMiddleware::class)->only('store');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -80,6 +94,7 @@ class AppealController extends Controller
         return DB::table("appeals")
             ->join("country_codes", "country_codes.id", "=", "appeals.language_codes")
             ->join("referances", "referances.id", "=", "appeals.referances_id")
+            ->where("appeals.created_at", ">", now()->subDays(7)->toDateString())
             ->select("appeals.*", "appeals.created_at as appeals_created_at", "country_codes.*", "referances.name as referances_name");
     }
     public function order(Request $request)
@@ -91,9 +106,6 @@ class AppealController extends Controller
                 break;
             case 'language':
                 $data =  $this->appeals_join_referances_and_country_codes()->orderBy("country_codes.code")->get();
-                break;
-            case 'last_7_days':
-                $data =  $this->appeals_join_referances_and_country_codes()->where("appeals.created_at", ">", now()->subDays(7)->toDateString())->orderBy('appeals.created_at', 'asc')->get();
                 break;
             default:
                 return response()->json(false);

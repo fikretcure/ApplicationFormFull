@@ -9,7 +9,6 @@ use App\Models\Referance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,16 +23,7 @@ use Illuminate\Support\Facades\Storage;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/test', function (Request $request) {
-
-    return true;
-});
-
-Route::get('/appeal/order', [AppealController::class, "order"]);
-
-
-
-
+Route::get('/appeal/order', [AppealController::class, "order"])->name("appeal.order");
 Route::apiResources([
     'appeal' => AppealController::class,
     'country_code' => CountryCodeController::class,
