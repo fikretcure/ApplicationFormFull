@@ -17,13 +17,14 @@ class LocationMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-         $ip = "95.70.185.251"; // türkiyeye ait ip
+        $ip = "95.70.185.251"; // türkiyeye ait ip
         // $ip = "69.197.185.43"; // ingiltere ait ip
-        //$ip = "5.45.207.149"; // rusya ait ip
+        // $ip = "5.45.207.149"; // rusya ait ip
         switch (Location::get($ip)->countryName) {
-            case 'Turkey':
-            case 'United States':
-            case 'Russia':
+                // case 'Turkey':
+                // case 'United States':
+                // case 'Russia':
+            case '...':
                 return response()->json("Mevcut " . "(" . Location::get($ip)->countryName . ")" . " lokasyonunuzdan başvuru yapamazsınız !", 421);
                 break;
             default:

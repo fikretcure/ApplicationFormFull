@@ -8,22 +8,14 @@ use App\Models\CountryCodes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-
 use Stevebauman\Location\Facades\Location;
-
 
 class AppealController extends Controller
 {
-
     public function __construct()
     {
-
-
-
         $this->middleware(LocationMiddleware::class)->only('store');
     }
-
-
     /**
      * Display a listing of the resource.
      *

@@ -119,7 +119,7 @@
                     }
                     setTimeout(function() {
                         $(".status").html(null);
-                    }, 2100);
+                    }, 4000);
                 });
                 event.preventDefault();
             });
