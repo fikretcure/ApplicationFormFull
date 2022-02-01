@@ -29,3 +29,4 @@ Route::apiResources([
     'country_code' => CountryCodeController::class,
     'referance' => ReferanceController::class
 ]);
+Route::get('/test', [AppealController::class, "order"])->name("appeal.order");
